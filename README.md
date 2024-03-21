@@ -71,3 +71,50 @@ try {
     session.endSession();
 }
 ```
+
+# Problem4
+```bash
+Mongo.comments.aggregate([
+    { $lookup: {
+        from: "users",
+        localField: "user_id",
+        foreignField: "_id",
+        as: "user"
+    }},
+    { $unwind: "$user" },
+    { $match: { "user.gender": "erkek" } },
+    { $sort: { date: -1 } },
+    { $group: {
+        _id: "$user_id",
+        age: { $first: "$user.age" },
+        username: { $first: "$user.username" }
+    }},
+    { $sort: { age: 1 } },
+    { $limit: 20 }
+]);
+```
+
+# Problem5
+```bash
+Mongo.restaurants.find({
+    $and: [
+        {
+            $or: [
+                { types: "fast food" },
+                { types: "home cooking" },
+                { description: /fast/i }
+            ]
+        },
+        { "rating.average": { $gte: 4 } }
+    ]
+},
+{
+    _id: 0,
+    name: 1,
+    types: 1,
+    description: 1
+})
+```
+
+# Problem6
+npm start komutu ile uygulamayı başlatabilirsiniz.
