@@ -33,7 +33,8 @@ export class Mongo {
         Mongo.entities = {
             users: vocoEntities.users,
             restaurants: vocoEntities.restaurants,
-            orders: vocoEntities.orders
+            orders: vocoEntities.orders,
+            comments: vocoEntities.comments
         };
     }
 }
