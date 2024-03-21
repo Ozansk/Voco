@@ -1,4 +1,6 @@
 import { connect } from 'mongoose';
+import * as vocoEntities from './entities';
+
 export class Mongo {
     private config: any;
     static entities: any;
@@ -29,6 +31,9 @@ export class Mongo {
 
     private vocoEntities() {
         Mongo.entities = {
+            users: vocoEntities.users,
+            restaurants: vocoEntities.restaurants,
+            orders: vocoEntities.orders
         };
     }
 }

@@ -1,7 +1,7 @@
 {
     "HOSTNAME": "mongodb://localhost:27017/",
     "PORT": 27017,
-    "USERNAME": "mongo",
-    "PASSWORD": "mongo",
+    "USERNAME": "",
+    "PASSWORD": "",
     "DATABASE": "voco"
 }

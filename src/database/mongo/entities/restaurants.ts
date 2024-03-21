@@ -44,6 +44,10 @@ const restaurantSchema = new Schema(
             type: Date,
             required: true
         },
+        rating: {
+            type: Object,
+            required: true
+        },
         addresses: [RestaurantAddressSchema]
     }
 );
