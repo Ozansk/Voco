@@ -1,13 +1,13 @@
 import { model, Schema } from 'mongoose';
 
-export interface IAddress {
+interface IAddress {
     city: string;
     district: string;
     address: string;
     description: string;
 }
 
-export interface IUser {
+interface IUser {
     username: string;
     password: string;
     email: Date;

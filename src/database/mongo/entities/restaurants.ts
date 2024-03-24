@@ -1,17 +1,43 @@
 import { model, Schema } from 'mongoose';
 
-export interface IRestaurantAddress {
+interface IMenu {
+    name: string;
+    price: number;
+    coverPicture: string;
+}
+
+interface IRestaurantAddress {
     city: string;
     district: string;
     address: string;
 }
 
-export interface IRestaurant {
+interface IRestaurant {
     name: string;
     description: string;
     logo: string;
+    rating: Object;
+    types: Array<string>;
+    menus: Array<IMenu>;
     addresses: Array<IRestaurantAddress>
 }
+
+const MenuSchema: Schema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: Number,
+            required: true
+        },
+        coverPicture: {
+            type: String,
+            required: true
+        }
+    }
+)
 
 const RestaurantAddressSchema: Schema = new Schema(
     {
@@ -48,6 +74,12 @@ const restaurantSchema = new Schema(
             type: Object,
             required: true
         },
+        types: [
+            {
+                type: String
+            }
+        ],
+        menus: [MenuSchema],
         addresses: [RestaurantAddressSchema]
     }
 );
